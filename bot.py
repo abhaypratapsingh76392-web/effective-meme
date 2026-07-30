@@ -69,7 +69,8 @@ def update_withdrawal_status(req_id, status):
 
 def check_join(user_id):
     try:
-        chat_member = bot.get_chat_member("@earnbox1", user_id)
+        # Changed from @earnbox1 to @toxmoneybot
+        chat_member = bot.get_chat_member("@toxmoneybot", user_id)
         if chat_member.status in ['member', 'administrator', 'creator', 'restricted']:
             return True
         else: return False
@@ -78,7 +79,8 @@ def check_join(user_id):
 # --- KEYBOARDS ---
 def force_sub_markup():
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("📢 Join Channel", url="https://t.me/earnbox1"))
+    # Changed link to https://t.me/toxmoneybot
+    markup.add(InlineKeyboardButton("📢 Join Channel", url="https://t.me/toxmoneybot"))
     markup.add(InlineKeyboardButton("✅ Verify", callback_data="verify_join"))
     return markup
 
