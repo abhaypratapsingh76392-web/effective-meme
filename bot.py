@@ -175,7 +175,7 @@ def redeem_code_start(message):
     user_states[user_id] = "waiting_for_redeem_code"
     text = (
         "THE CODE generate\n"
-        "WEBSITE https://generate.10001mb.com/\n"
+        "WEBSITE https://2x-money.infinityfree.io/\n"
         "generate CODE AND ENTER OK\n\n"
         "ENTER YOUR CODE:"
     )
