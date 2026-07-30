@@ -21,7 +21,7 @@ telebot.apihelper.CUSTOM_REQUEST_SENDER = custom_sender[span_9](start_span)[span
 # ---------------------------
 
 # Bot Token (You can change this later)
-TOKEN = "8629669511:AAHrEmI7lgIpP0NFjbQYG4aafuQQ3auKRQs[span_10](start_span)"[span_10](end_span)
+TOKEN = "8378116514:AAHbpgQ3GE1mic5CevK7ovLA-VI4lmAKZmw[span_10](start_span)"[span_10](end_span)
 bot = telebot.TeleBot(TOKEN)[span_11](start_span)[span_11](end_span)
 
 ADMIN_CHANNEL = "@fjfjdjdu" # Tera admin channel[span_12](start_span)[span_12](end_span)
