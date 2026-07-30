@@ -1,17 +1,15 @@
-# Initialize base configuration from PHP 8.1 built with Apache framework
-FROM php:8.1-apache
+FROM python:3.10-slim
 
-# Define operational system directory constraints for HTML/PHP server hosting
-WORKDIR /var/www/html/
+WORKDIR /app
 
-# Secure execution by enforcing Apache environment ownership
-RUN chown -R www-data:www-data /var/www/html/ \
-    && chmod -R 755 /var/www/html/
+# Install required packages
+RUN pip install pyTelegramBotAPI requests urllib3
 
-# Establish mapping routines for HTML/PHP operational scripts
-COPY index.php .
-COPY buy.php .
-COPY admin.html .
+# Copy the bot code
+COPY bot.py .
 
-# Declare inbound exposure configuration mapping for TCP traversal
-EXPOSE 80
+# Expose port for Dummy Server (Render bypass)
+EXPOSE 7860
+
+# Run the bot
+CMD ["python", "bot.py"]
