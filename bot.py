@@ -22,7 +22,9 @@ telebot.apihelper.CUSTOM_REQUEST_SENDER = custom_sender
 
 TOKEN = "8378116514:AAHbpgQ3GE1mic5CevK7ovLA-VI4lmAKZmw"
 bot = telebot.TeleBot(TOKEN)
-ADMIN_CHANNEL = "@fjfjdjdu" 
+
+# Yahan apna Telegram User ID (Number wala) dalein, example: 123456789
+ADMIN_ID = 7880743323 
 FIREBASE_URL = "https://movie-ee8bb-default-rtdb.firebaseio.com"
 
 user_states = {}
@@ -348,12 +350,13 @@ def handle_states(message):
                     f"🏦 **UPI ID:** `{user['upi']}`"
                 )
                 try:
-                    bot.send_message(ADMIN_CHANNEL, req_text, reply_markup=markup, parse_mode="Markdown")
+                    # Yahan par message seedha ADMIN_ID par jayega
+                    bot.send_message(ADMIN_ID, req_text, reply_markup=markup, parse_mode="Markdown")
                     bot.send_message(message.chat.id, "✅ Aapki withdrawal request successfully submit ho chuki hai. History check karte rahein.", reply_markup=withdraw_menu_keyboard())
                 except Exception as e:
                     update_db(user_id, {"balance": user['balance']})
                     requests.delete(f"{FIREBASE_URL}/withdrawals/{req_id}.json")
-                    bot.send_message(message.chat.id, "⚠️ System error! Channel connect nahi ho paya. Admin ko bot fix karne ko bolein.", reply_markup=main_menu())
+                    bot.send_message(message.chat.id, "⚠️ System error! Admin se connect nahi ho paya. Admin ko bot fix karne ko bolein.", reply_markup=main_menu())
             else: bot.send_message(message.chat.id, "⚠️ Server Error generating request.", reply_markup=main_menu())
         except ValueError:
             user_states.pop(user_id, None)
